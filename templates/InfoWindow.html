@@ -1,0 +1,28 @@
+<table>
+    <tr>
+        <td>Messenger:</td>
+        <td><%= messengerName %></td>
+    </tr>
+    <tr>
+        <td>Type:</td>
+        <td><%= messageType %></td>
+    </tr>
+    <tr>
+        <td>Time:</td>
+        <td><%= timeString %></td>
+    </tr>
+    <tr>
+        <td>Location:</td>
+        <td><%= longitude %>, <%= latitude %></td>
+    </tr>
+    <tr>
+        <td>Battery State:</td>
+        <td><%= batteryState %></td>
+    </tr>
+    <% if(messageContent) { %>
+    <tr>
+        <td>Content:</td>
+        <td><%= messageContent %></td>
+    </tr>
+    <% } %>
+</table>

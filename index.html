@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Epic Tracker - White Mountains 2017</title>
+    <link rel="stylesheet" type="text/css" href="styles/angular-material.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/site.css" />
+</head>
+<body ng-app="cyclingRouteApp">
+
+<div style="height: 100%" ng-controller="mainController">
+    <div map is-possibly-missed="isLocationsPossiblyMissed" style="height: 100%"></div>
+
+    <md-button class="md-fab md-primary settings-button" ng-click="openSettingsBar()" aria-label="settings">
+        <md-icon md-svg-src="img/cog.svg"></md-icon>
+    </md-button>
+    <md-button class="md-fab settings-button" ng-show="isLocationsPossiblyMissed" style="bottom: 90px" ng-click="loadNextLocations()" title="Load more locations" aria-label="loadNext">
+        <md-icon md-svg-src="img/download.svg"></md-icon>
+    </md-button>
+    <md-sidenav class="md-sidenav-left" md-component-id="settings-bar"
+                md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Settings</h1>
+        </md-toolbar>
+
+        <md-content layout="column" layout-align="start stretch" layout-margin style="overflow-x: hidden">
+
+            <locations-fetch ng-show="editPermitted"></locations-fetch>
+
+            <md-divider></md-divider>
+
+            <input type="file" file-uploader file="chosenFile" />
+            <md-checkbox ng-model="storeRouteFile" style="margin-left: 8px">Store as shared default route</md-checkbox>
+            <md-button class="md-raised md-primary" ng-click="uploadRoute()" ng-disabled="!editPermitted">upload gpx</md-button>
+
+            <md-divider></md-divider>
+
+            <md-button class="md-raised" ng-click="toggleUserLocationsEnabled()" ng-disabled="!editPermitted">insert user locations</md-button>
+            <md-button class="md-raised md-warn" ng-click="clearUserLocations()" ng-disabled="!editPermitted">clear user locations</md-button>
+            <md-button class="md-raised md-primary" ng-click="saveUserLocations()" ng-disabled="!editPermitted">save user locations</md-button>
+
+            <md-divider></md-divider>
+
+            <md-input-container>
+                <label>Password</label>
+                <input type="password" ng-model="password">
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="enableEdit()">enable edit</md-button>
+        </md-content>
+
+    </md-sidenav>
+</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=API_KEY"></script>
+<script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+</html>

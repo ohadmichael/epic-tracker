@@ -1,0 +1,18 @@
+<h4 style="margin-top: 5px">Locations Fetch</h4>
+
+<md-datepicker ng-model="fromDate" md-placeholder="From Date"></md-datepicker>
+<md-input-container style="margin-left: 14px">
+    <label>From Time (Your Zone)</label>
+    <input type="time" ng-model="fromTime" style="width: 170px">
+</md-input-container>
+
+<md-datepicker ng-model="toDate" md-placeholder="To Date"></md-datepicker>
+<md-input-container style="margin-left: 14px">
+    <label>To Time</label>
+    <input type="time" ng-model="toTime" style="width: 170px">
+</md-input-container>
+
+<div layout="row">
+    <md-button flex class="md-raised md-primary" ng-click="loadFetchOptions()">Load</md-button>
+    <md-switch ng-model="isAutoLoading" ng-change="refreshFetchInterval()">Auto</md-switch>
+</div>
